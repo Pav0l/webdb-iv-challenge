@@ -5,16 +5,11 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('recipes').insert([
-        {dish_id: 1, recipe_name: 'Hawai', instructions: 'lorem ipsum'},
-        {dish_id: 1, recipe_name: 'Fungi', instructions: 'lorem ipsum'},
-        {dish_id: 1, recipe_name: 'Bacon and eggs', instructions: 'lorem ipsum'},
-        {dish_id: 1, recipe_name: 'Vegan', instructions: ''},
-        {dish_id: 2, recipe_name: 'Tomato soup', instructions: 'lorem ipsum'},
-        {dish_id: 2, recipe_name: 'Chicken soup', instructions: ''},
-        {dish_id: 2, recipe_name: 'Cabage soup', instructions: 'lorem ipsum'},
-        {dish_id: 3, recipe_name: 'Green', instructions: ''},
-        {dish_id: 3, recipe_name: 'Camomile', instructions: ''},
-        {dish_id: 3, recipe_name: 'Black', instructions: ''}
+        {recipe_id: 1, dish_id: 1, recipe_name: 'Hawai', instructions: 'lorem ipsum'},
+        {recipe_id: 2, dish_id: 1, recipe_name: 'Vegan', instructions: ''},
+        {recipe_id: 3, dish_id: 2, recipe_name: 'Tomato soup', instructions: 'lorem ipsum'},
+        {recipe_id: 4, dish_id: 2, recipe_name: 'Cabage soup', instructions: 'lorem ipsum'},
+        {recipe_id: 5, dish_id: 3, recipe_name: 'Black', instructions: ''}
       ]);
     });
 };
