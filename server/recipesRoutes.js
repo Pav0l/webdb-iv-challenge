@@ -33,6 +33,23 @@ routes.post('/', async (req, res) => {
   }
 });
 
+/*
+getRecipe(id) to your data access library that should return the recipe with the provided id. The recipe should include:
+name of the dish.
+name of the recipe.
+the list of ingredients with the quantity
+*/
 
+routes.get('/:id', async (req, res) => {
+  const recipeId = req.params.id;
+  try {
+    const getSingleRecipe = await DB.getRecipe(recipeId);
+
+    res.status(200).json(getSingleRecipe);
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+
+});
 
 module.exports = routes;
