@@ -4,7 +4,18 @@
   "description": "- database modeling.\r - migration scripts.\r - seeding.\r - knex.",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "createDishes": "knex migrate:make createDishesTable",
+    "createRecipes": "knex migrate:make createRecipesTable",
+    "createIngredients": "knex migrate:make createIngredientsTable",
+    "createRecipesDetails": "knex migrate:make createRecipesDetailsTable",
+    "seedDishes": "knex seed:make 01-Dishes",
+    "seedRecipes": "knex seed:make 02-Recipes",
+    "seedIngredients": "knex seed:make 03-Ingredients",
+    "seedRecipesDetails": "knex seed:make 04-RecipesDetails",
+    "runSeeds": "knex seed:run",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback"
   },
   "repository": {
     "type": "git",
