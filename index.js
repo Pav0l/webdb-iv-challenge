@@ -1,12 +1,23 @@
 const express = require('express');
-const knex = require('knex');
 const helmet = require('helmet');
+const dishRoutes = require('./server/dishRoutes');
+const recipesRoutes = require('./server/recipesRoutes');
 
 const app = express();
 
+// Routes URL
+const dishUrl = '/api/dishes';
+const recipesUrl = '/api/recipes';
+
+// Express middlewares
 app.use(helmet());
 app.use(express.json());
 
+app.use(dishUrl, dishRoutes);
+app.use(recipesUrl, recipesRoutes);
+
+
+// HOME request
 app.get('/', (req, res) => {
   res.status(200).json("Hello from GET request");
 });
