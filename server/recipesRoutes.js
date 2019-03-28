@@ -39,7 +39,12 @@ routes.get('/:id', async (req, res) => {
   try {
     const getSingleRecipe = await DB.getRecipe(recipeId);
 
-    res.status(200).json(getSingleRecipe);
+    if (getSingleRecipe) {
+      res.status(200).json(getSingleRecipe);
+    } else {
+      res.status(404).json({ message: `Recipe with ID ${dishId} does not exist.`});
+    }
+
   } catch (error) {
     res.status(500).json({ error });
   }
