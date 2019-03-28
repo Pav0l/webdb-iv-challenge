@@ -43,7 +43,6 @@ function getRecipe(id) {
   return (
     db
       .select('d.dish_name', 'r.recipe_name', 'i.ingredients_name', 'rd.ingredient_quantity', 'i.price')
-      // .select()
       .from('recipes_details as rd')
       .innerJoin('recipes as r', 'r.recipe_id', '=', idNum)
       .innerJoin('ingredients as i ', 'rd.ingredients_id', '=', 'i.ingredients_id')
