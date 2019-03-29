@@ -24,7 +24,21 @@ function addDish(dish) {
 
 // `getDish(id)`: should return the **dish** with the provided `id` and include a list of the related recipes.
 function getDish(id) {
-  return db.select('dishes.id', 'dishes.dish_name', 'recipes.recipe_name').from('dishes').where('id', id).join('recipes', 'dishes.id', '=', 'recipes.dish_id');
+  // return db.select('dishes.id', 'dishes.dish_name', 'recipes.recipe_name').from('dishes').where('id', id).join('recipes', 'dishes.id', '=', 'recipes.dish_id');
+
+  return db('dishes') // select dishes table
+    .where({ id })  // select rows that has the same id as provided
+    .first()  // select first row returned
+    .then(data => { // table (with single row) of dishes - object with {id, dish_name}
+      return db('recipes') // select recipes table
+        .where({ dish_id: id })  // filter it based on dish_id
+        .then(recipes => { // then with all rows of recipes table (array of objects)
+          data.recipes = recipes;  // add this array to the object with dish
+          return data; // return the object with dish properties and recipe array
+        });
+    });
+  
+
 }
 
 // `getRecipes()`: should return a list of all recipes in the database including the **dish** they belong to.
